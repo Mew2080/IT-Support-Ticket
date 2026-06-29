@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVICE ENGINEERING - Admin Tickets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../img/logo2.png">
+    <link rel="shortcut icon" type="image/png" href="../img/logo2.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="top-navbar-shell">
+            <div class="top-navbar-inner">
+                <div class="nav-left">
+                    <a href="../index.html" class="nav-brand">
+                        <img src="../img/logo2.png" alt="SET Logo" class="nav-logo">
+                        <span class="nav-title">IT Support Ticket</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-btn nav-btn-ghost nav-dropdown-toggle">
+                            <span>Menu</span><span class="nav-dropdown-chevron">▾</span>
+                        </button>
+                        <div class="nav-dropdown-menu">
+                            <a href="../dashboard.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <span>Home</span>
+                            </a>
+                            <a href="../my_tickets.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span>My Tickets</span>
+                            </a>
+                            <a href="../profile.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>Profile</span>
+                            </a>
+                            <a href="tickets.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path></svg>
+                                <span>Admin</span>
+                            </a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="../index.html" class="nav-dropdown-item nav-dropdown-item-danger">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>จัดการ Tickets (Admin)</h1>
+            <div class="user-info">
+                <span>IT Admin</span>
+                <a href="../profile.html" class="user-role-badge role-admin" aria-label="Admin">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <!-- Admin Navigation Tabs -->
+            <div class="admin-tabs" style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+                <a href="tickets.html" class="btn btn-primary btn-sm">Tickets</a>
+                <a href="users.html" class="btn btn-secondary btn-sm">Users</a>
+                <a href="report.html" class="btn btn-secondary btn-sm">Report</a>
+            </div>
+
+            <!-- Filter Form -->
+            <div class="action-card">
+                <form class="filter-form" id="filterForm" onsubmit="return false;">
+                        <div class="filter-group">
+                            <label>สถานะ</label>
+                            <select class="form-group input" name="status">
+                                <option value="">ทั้งหมด</option>
+                                <option value="open">เปิด</option>
+                                <option value="in_progress">กำลังดำเนินการ</option>
+                                <option value="closed">ปิด</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>ผู้รับงาน</label>
+                            <select class="form-group input" name="assigned_to">
+                                <option value="">ทั้งหมด</option>
+                                <option value="none">ยังไม่มีผู้รับ</option>
+                                <option value="me">รับโดยฉัน</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>ความสำคัญ</label>
+                            <select class="form-group input" name="priority">
+                                <option value="">ทั้งหมด</option>
+                                <option value="low">ต่ำ</option>
+                                <option value="normal">ทั่วไป</option>
+                                <option value="urgent">ด่วน</option>
+                                <option value="critical">วิกฤต</option>
+                            </select>
+                        </div>
+                        <div class="filter-group button-actions">
+                            <button type="submit" class="btn btn-primary">ค้นหา</button>
+                            <button type="button" class="btn btn-secondary" onclick="this.form.reset()">ล้างตัวกรอง</button>
+                        </div>
+                </form>
+            </div>
+
+            <!-- Tickets Table -->
+            <div class="action-card">
+                <h2 style="margin-bottom: 16px;">รายการ Tickets ทั้งหมด</h2>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">#</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">หัวข้อ</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">ผู้แจ้ง</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">หมวดหมู่</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">ความสำคัญ</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">สถานะ</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">ผู้รับงาน</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #374151;">วันที่</th>
+                                <th style="padding: 12px 16px; text-align: center; font-weight: 600; color: #374151;">จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f3f4f6; transition: background 0.1s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background=''">
+                                <td style="padding: 12px 16px; color: #6b7280;">3</td>
+                                <td style="padding: 12px 16px;"><a href="ticket_detail.html?id=3" style="color: var(--primary-color); font-weight: 500; text-decoration: none;">อินเทอร์เน็ตไม่ขึ้นสัญญาณ</a></td>
+                                <td style="padding: 12px 16px;">สมชาย ใจดี</td>
+                                <td style="padding: 12px 16px;">Network</td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-priority" style="background-color: #f59e0b;">ด่วน</span></td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-status badge-in_progress">กำลังดำเนินการ</span></td>
+                                <td style="padding: 12px 16px; color: var(--primary-color); font-weight: 600;">IT Admin</td>
+                                <td style="padding: 12px 16px; color: #6b7280; white-space: nowrap;">27/06/2026</td>
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                                        <a href="ticket_detail.html?id=3" class="btn btn-primary btn-sm">ดู</a>
+                                        <button type="button" class="btn btn-secondary btn-sm" onclick="showDemoAlert()">ลบ</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f3f4f6; transition: background 0.1s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background=''">
+                                <td style="padding: 12px 16px; color: #6b7280;">2</td>
+                                <td style="padding: 12px 16px;"><a href="ticket_detail.html?id=2" style="color: var(--primary-color); font-weight: 500; text-decoration: none;">เครื่องพิมพ์ไม่ทำงาน</a></td>
+                                <td style="padding: 12px 16px;">สมชาย ใจดี</td>
+                                <td style="padding: 12px 16px;">Printer</td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-priority" style="background-color: #54c5f8;">ทั่วไป</span></td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-status badge-open">เปิด</span></td>
+                                <td style="padding: 12px 16px; color: #9ca3af;">-</td>
+                                <td style="padding: 12px 16px; color: #6b7280; white-space: nowrap;">25/06/2026</td>
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                                        <a href="ticket_detail.html?id=2" class="btn btn-primary btn-sm">ดู</a>
+                                        <button type="button" class="btn btn-secondary btn-sm" onclick="showDemoAlert()">ลบ</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="transition: background 0.1s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background=''">
+                                <td style="padding: 12px 16px; color: #6b7280;">1</td>
+                                <td style="padding: 12px 16px;"><a href="ticket_detail.html?id=1" style="color: var(--primary-color); font-weight: 500; text-decoration: none;">โปรแกรม Excel ค้าง</a></td>
+                                <td style="padding: 12px 16px;">สมชาย ใจดี</td>
+                                <td style="padding: 12px 16px;">Software</td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-priority" style="background-color: #54c5f8;">ทั่วไป</span></td>
+                                <td style="padding: 12px 16px;"><span class="badge badge-status badge-closed">ปิด</span></td>
+                                <td style="padding: 12px 16px; color: var(--primary-color); font-weight: 600;">IT Admin</td>
+                                <td style="padding: 12px 16px; color: #6b7280; white-space: nowrap;">20/06/2026</td>
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                                        <a href="ticket_detail.html?id=1" class="btn btn-primary btn-sm">ดู</a>
+                                        <button type="button" class="btn btn-secondary btn-sm" onclick="showDemoAlert()">ลบ</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.nav-dropdown');
+            const toggle = document.querySelector('.nav-dropdown-toggle');
+            if (toggle && dropdown) {
+                toggle.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('nav-dropdown-active'); });
+                document.addEventListener('click', function(e) { if (!dropdown.contains(e.target)) dropdown.classList.remove('nav-dropdown-active'); });
+            }
+        });
+
+        function showDemoAlert() {
+            alert('Demo Mode: ฟังก์ชันนี้ต้องการ Backend Server');
+        }
+    </script>
+</body>
+</html>

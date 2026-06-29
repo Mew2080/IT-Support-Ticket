@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVICE ENGINEERING</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo2.png">
+    <link rel="shortcut icon" type="image/png" href="img/logo2.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="top-navbar">
+        <div class="top-navbar-shell">
+            <div class="top-navbar-inner">
+                <div class="nav-left">
+                    <a href="index.html" class="nav-brand">
+                        <img src="img/logo2.png" alt="SET Logo" class="nav-logo">
+                        <span class="nav-title">IT Support Ticket</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-btn nav-btn-ghost nav-dropdown-toggle">
+                            <span>Menu</span><span class="nav-dropdown-chevron">▾</span>
+                        </button>
+                        <div class="nav-dropdown-menu">
+                            <a href="dashboard.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <span>Home</span>
+                            </a>
+                            <a href="my_tickets.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span>My Tickets</span>
+                            </a>
+                            <a href="profile.html" class="nav-dropdown-item">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>Profile</span>
+                            </a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="index.html" class="nav-dropdown-item nav-dropdown-item-danger">
+                                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>หน้าแรก</h1>
+            <div class="user-info">
+                <span id="header-user-display">สมชาย ใจดี</span>
+                <a href="profile.html" class="user-role-badge role-user" aria-label="User">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0 2c3.3 0 6 2.7 6 6H6c0-3.3 2.7-6 6-6z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <div class="dashboard-grid">
+                <div>
+                    <div class="action-card">
+                        <h2>Tickets</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Tickets ของฉัน:</label>
+                                <span>3 tickets</span>
+                            </div>
+                        </div>
+                        <div class="action-buttons" style="margin-top: 20px;">
+                            <a href="create_ticket.html" class="btn btn-primary">เปิด Ticket ใหม่</a>
+                            <a href="my_tickets.html" class="btn btn-secondary">Tickets ของฉัน</a>
+                            <button type="button" class="btn btn-primary" onclick="openTroubleshootingModal()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">FQA วิธีแก้ไขปัญหาที่พบได้บ่อย</button>
+                        </div>
+                    </div>
+
+                    <div class="action-card" style="margin-top: 18px;">
+                        <h2>Tickets ที่เคยเปิด (ล่าสุด)</h2>
+                        <div class="tickets-list" id="recentTicketsList">
+                            <div class="ticket-item">
+                                <div class="ticket-header">
+                                    <div class="ticket-subject">
+                                        <h3>#3 - อินเทอร์เน็ตไม่ขึ้นสัญญาณ</h3>
+                                    </div>
+                                    <div class="ticket-badges">
+                                        <span class="badge badge-priority" style="background-color: #f59e0b;">ด่วน</span>
+                                        <span class="badge badge-status badge-in_progress">กำลังดำเนินการ</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-description">
+                                    <p>อินเทอร์เน็ตเชื่อมต่อไม่ได้ตั้งแต่เช้า ลองรีสตาร์ทคอมแล้วแต่ยังไม่ได้ ใช้งานไม่ได้ทั้งหมดเลย...</p>
+                                </div>
+                                <div class="ticket-footer">
+                                    <span class="ticket-date">สร้าง: 27/06/2026 09:15</span>
+                                    <span class="ticket-date">อัปเดต: 28/06/2026 14:30</span>
+                                    <a href="ticket_detail.html?id=3" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+                                </div>
+                            </div>
+                            <div class="ticket-item">
+                                <div class="ticket-header">
+                                    <div class="ticket-subject">
+                                        <h3>#2 - เครื่องพิมพ์ไม่ทำงาน</h3>
+                                    </div>
+                                    <div class="ticket-badges">
+                                        <span class="badge badge-priority" style="background-color: #54c5f8;">ทั่วไป</span>
+                                        <span class="badge badge-status badge-open">เปิด</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-description">
+                                    <p>เครื่องพิมพ์ Canon LBP ไม่สามารถพิมพ์ได้ ขึ้น error offline ทั้งที่เปิดอยู่...</p>
+                                </div>
+                                <div class="ticket-footer">
+                                    <span class="ticket-date">สร้าง: 25/06/2026 11:20</span>
+                                    <a href="ticket_detail.html?id=2" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+                                </div>
+                            </div>
+                            <div class="ticket-item">
+                                <div class="ticket-header">
+                                    <div class="ticket-subject">
+                                        <h3>#1 - โปรแกรม Excel ค้าง</h3>
+                                    </div>
+                                    <div class="ticket-badges">
+                                        <span class="badge badge-priority" style="background-color: #54c5f8;">ทั่วไป</span>
+                                        <span class="badge badge-status badge-closed">ปิด</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-description">
+                                    <p>เปิดไฟล์ Excel ขนาดใหญ่แล้วโปรแกรมค้างไม่ตอบสนอง ต้องปิดโดยใช้ Task Manager...</p>
+                                </div>
+                                <div class="ticket-footer">
+                                    <span class="ticket-date">สร้าง: 20/06/2026 10:00</span>
+                                    <span class="ticket-date">อัปเดต: 22/06/2026 16:45</span>
+                                    <span class="ticket-date" style="color: var(--primary-color); font-weight: 600;">แก้ไขโดย: IT Admin (Admin)</span>
+                                    <a href="ticket_detail.html?id=1" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- User Info Modal -->
+        <div id="userInfoModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>ข้อมูลผู้ใช้</h2>
+                    <button type="button" class="modal-close" onclick="closeUserInfoModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="userInfoView">
+                        <div class="info-grid">
+                            <div class="info-item"><label>อีเมล:</label><span id="view-email">somchai@company.com</span></div>
+                            <div class="info-item"><label>ชื่อ-นามสกุล:</label><span id="view-fullname">สมชาย ใจดี</span></div>
+                            <div class="info-item"><label>เบอร์โทรศัพท์:</label><span id="view-phone">081-234-5678</span></div>
+                            <div class="info-item"><label>แผนก:</label><span id="view-department">Engineering</span></div>
+                            <div class="info-item"><label>วันที่สมัคร:</label><span>01/01/2026 08:00</span></div>
+                        </div>
+                    </div>
+                    <div id="userInfoEdit" style="display: none;">
+                        <form id="editUserForm" onsubmit="updateUserProfile(event)">
+                            <div class="form-group">
+                                <label for="edit-email">อีเมล *</label>
+                                <input type="email" id="edit-email" name="email" value="somchai@company.com" required class="form-group input" readonly style="background-color: #f5f5f5; cursor: not-allowed;">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-fullname">ชื่อ-นามสกุล</label>
+                                <input type="text" id="edit-fullname" name="full_name" value="สมชาย ใจดี" class="form-group input">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-phone">เบอร์โทรศัพท์</label>
+                                <input type="tel" id="edit-phone" name="phone" value="081-234-5678" class="form-group input" placeholder="เช่น 081-234-5678">
+                            </div>
+                            <div class="form-group">
+                                <label>แผนก</label>
+                                <input type="text" value="Engineering" class="form-group input" readonly style="background-color: #f3f4f6; cursor: not-allowed;">
+                            </div>
+                            <div id="edit-error-message" style="display: none; color: var(--error-color); margin-top: 10px; padding: 10px; background: rgba(239, 68, 68, 0.1); border-radius: 6px; border: 1px solid var(--error-color);"></div>
+                            <div id="edit-success-message" style="display: none; color: var(--success-color); margin-top: 10px; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; border: 1px solid var(--success-color);"></div>
+                        </form>
+                    </div>
+                    <div id="changePasswordMode" style="display: none;">
+                        <form id="changePasswordForm" onsubmit="updatePassword(event)">
+                            <div class="form-group">
+                                <label for="current-password">รหัสผ่านปัจจุบัน *</label>
+                                <div class="password-toggle-wrapper">
+                                    <input type="password" id="current-password" name="current_password" required class="form-group input">
+                                    <button type="button" class="password-toggle-btn" onclick="togglePassword('current-password')" aria-label="แสดงรหัสผ่าน"><span id="current-password-toggle-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">รหัสผ่านใหม่ *</label>
+                                <div class="password-toggle-wrapper">
+                                    <input type="password" id="new-password" name="new_password" required minlength="6" class="form-group input">
+                                    <button type="button" class="password-toggle-btn" onclick="togglePassword('new-password')" aria-label="แสดงรหัสผ่าน"><span id="new-password-toggle-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-new-password">ยืนยันรหัสผ่านใหม่ *</label>
+                                <div class="password-toggle-wrapper">
+                                    <input type="password" id="confirm-new-password" name="confirm_new_password" required minlength="6" class="form-group input">
+                                    <button type="button" class="password-toggle-btn" onclick="togglePassword('confirm-new-password')" aria-label="แสดงรหัสผ่าน"><span id="confirm-new-password-toggle-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
+                                </div>
+                                <small id="password-match-message" style="display: none; color: var(--error-color); font-weight: 500;"></small>
+                            </div>
+                            <div id="password-error-message" style="display: none; color: var(--error-color); margin-top: 10px; padding: 10px; background: rgba(239, 68, 68, 0.1); border-radius: 6px; border: 1px solid var(--error-color);"></div>
+                            <div id="password-success-message" style="display: none; color: var(--success-color); margin-top: 10px; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; border: 1px solid var(--success-color);"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="viewModeButtons" style="display: flex; gap: 10px; width: 100%; justify-content: flex-end; flex-wrap: wrap;">
+                        <button type="button" class="btn btn-primary" onclick="toggleEditMode()" style="flex-shrink: 0;">แก้ไขข้อมูล</button>
+                        <button type="button" class="btn btn-secondary" onclick="toggleChangePasswordMode()" style="background: white; color: #1f2937; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0;">เปลี่ยนรหัสผ่าน</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeUserInfoModal()" style="flex-shrink: 0;">ปิด</button>
+                    </div>
+                    <div id="editModeButtons" style="display: none;">
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('editUserForm').dispatchEvent(new Event('submit'))">บันทึก</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelEditMode()">ยกเลิก</button>
+                    </div>
+                    <div id="changePasswordModeButtons" style="display: none;">
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').dispatchEvent(new Event('submit'))">บันทึก</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelChangePasswordMode()">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshooting Modal -->
+        <div id="troubleshootingModal" class="modal">
+            <div class="modal-content" style="max-width: 800px;">
+                <div class="modal-header">
+                    <h2>FQA วิธีแก้ไขปัญหาที่พบได้บ่อย</h2>
+                    <button type="button" class="modal-close" onclick="closeTroubleshootingModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="troubleshooting-content">
+                        <div class="troubleshooting-section">
+                            <div class="troubleshooting-header">
+                                <h3 class="troubleshooting-title">NETWORK</h3>
+                                <span class="troubleshooting-icon">▼</span>
+                            </div>
+                            <div class="troubleshooting-content-inner">
+                                <ul class="troubleshooting-list">
+                                    <li class="troubleshooting-item" onclick="showTroubleshootingDetail('internet')">
+                                        <span>ไม่สามารถเชื่อมต่ออินเทอร์เน็ต</span>
+                                        <div id="detail-internet" class="troubleshooting-detail" style="display: none;">
+                                            <h4>ไม่สามารถเชื่อมต่ออินเทอร์เน็ต</h4>
+                                            <div class="detail-section">
+                                                <strong>สาเหตุที่เป็นไปได้:</strong>
+                                                <ul><li>สาย LAN หลุดหรือเสียบไม่แน่น</li><li>Router หรือ Modem ปิดหรือเสีย</li><li>การ์ด LAN เสียหรือไดรเวอร์เสีย</li><li>ตั้งค่า IP Address ไม่ถูกต้อง</li></ul>
+                                            </div>
+                                            <div class="detail-section">
+                                                <strong>วิธีแก้ไข:</strong>
+                                                <ul><li>ตรวจสอบสาย LAN ว่าต่อแน่นทั้งสองด้าน</li><li>ลองรีสตาร์ท Router/Modem (ปิด 30 วินาที แล้วเปิดใหม่)</li><li>ลองใช้คำสั่ง ipconfig /release และ ipconfig /renew ใน Command Prompt</li><li>ลองเปลี่ยน DNS Server เป็น 8.8.8.8 และ 8.8.4.4 (Google DNS)</li></ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="troubleshooting-item" onclick="showTroubleshootingDetail('wifi')">
+                                        <span>WiFi ไม่สามารถเชื่อมต่อได้</span>
+                                        <div id="detail-wifi" class="troubleshooting-detail" style="display: none;">
+                                            <h4>WiFi ไม่สามารถเชื่อมต่อได้</h4>
+                                            <div class="detail-section">
+                                                <strong>วิธีแก้ไข:</strong>
+                                                <ul><li>ตรวจสอบว่า WiFi Adapter เปิดอยู่</li><li>ลองรีสตาร์ท Router</li><li>ลบ WiFi Network ที่บันทึกไว้แล้วเชื่อมต่อใหม่</li><li>อัพเดทไดรเวอร์การ์ด WiFi</li></ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="troubleshooting-section">
+                            <div class="troubleshooting-header">
+                                <h3 class="troubleshooting-title">HARDWARE</h3>
+                                <span class="troubleshooting-icon">▼</span>
+                            </div>
+                            <div class="troubleshooting-content-inner">
+                                <ul class="troubleshooting-list">
+                                    <li class="troubleshooting-item" onclick="showTroubleshootingDetail('keyboard')">
+                                        <span>คีบอร์ดใช้งานไม่ได้</span>
+                                        <div id="detail-keyboard" class="troubleshooting-detail" style="display: none;">
+                                            <h4>คีย์บอร์ดใช้งานไม่ได้</h4>
+                                            <div class="detail-section">
+                                                <strong>วิธีแก้ไข:</strong>
+                                                <ul><li>ถอดแล้วเสียบคีย์บอร์ดเข้าพอร์ตอื่น</li><li>ลองใช้คีย์บอร์ดอื่นดู</li><li>ตรวจสอบ Device Manager</li></ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="troubleshooting-item" onclick="showTroubleshootingDetail('monitor')">
+                                        <span>จอคอมพิวเตอร์เปิดไม่ติด</span>
+                                        <div id="detail-monitor" class="troubleshooting-detail" style="display: none;">
+                                            <h4>จอคอมพิวเตอร์เปิดไม่ติด</h4>
+                                            <div class="detail-section">
+                                                <strong>วิธีแก้ไข:</strong>
+                                                <ul><li>ตรวจสอบสายไฟและปลั๊กไฟ</li><li>ตรวจสอบสาย VGA/HDMI/DVI ว่าต่อแน่น</li><li>ลองกดปุ่มใดๆ บนคีย์บอร์ดเพื่อออกจากโหมด Sleep</li></ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeTroubleshootingModal()">ปิด</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Modal -->
+        <div id="logoutModal" class="modal">
+            <div class="modal-content" style="max-width: 400px;">
+                <div class="modal-header">
+                    <h2>ยืนยันการออกจากระบบ</h2>
+                    <button type="button" class="modal-close" onclick="closeLogoutModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: center; font-size: 1.1em; color: var(--text-dark); margin: 20px 0;">คุณต้องการออกจากระบบ</p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: center; gap: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeLogoutModal()">ยกเลิก</button>
+                    <a href="index.html" class="btn btn-primary" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">ยืนยัน</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar dropdown
+            const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+            const dropdown = document.querySelector('.nav-dropdown');
+            if (dropdownToggle && dropdown) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('nav-dropdown-active');
+                });
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) dropdown.classList.remove('nav-dropdown-active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
